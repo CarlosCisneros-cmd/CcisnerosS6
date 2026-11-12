@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CcisnerosS6.Views.vEstudiante"
+             Title="vEstudiante">
+    <VerticalStackLayout
+        Padding="15"
+        Spacing="15">
+
+        <Label 
+            Text="SEMANA 6 : CRUD ESTUDIANTES"
+            FontSize="20"
+            FontAttributes="Bold"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+        <Grid Padding="5" RowSpacing="1" ColumnSpacing="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            
+            <Label Text="Codigo"   FontAttributes="Bold" Grid.Row="0" Grid.Column="0"/>
+            <Label Text="Nombre"   FontAttributes="Bold" Grid.Row="0" Grid.Column="1"/>
+            <Label Text="Apellido" FontAttributes="Bold" Grid.Row="0" Grid.Column="2"/>
+            <Label Text="Edad"     FontAttributes="Bold" Grid.Row="0" Grid.Column="3"/>
+
+         
+            <CollectionView x:Name="listaEstudiantes"
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="4">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="0,5" ColumnSpacing="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Text="{Binding codigo}"
+                                   VerticalOptions="Center"
+                                   Grid.Row="0"
+                                   Grid.Column="0"/>
+                            <Label Text="{Binding nombre}"
+                                   VerticalOptions="Center"
+                                   Grid.Row="0"
+                                   Grid.Column="1"/>
+                            <Label Text="{Binding apellido}"
+                                   VerticalOptions="Center"
+                                   Grid.Row="0"
+                                   Grid.Column="2"/>
+                            <Label Text="{Binding edad}"
+                                   VerticalOptions="Center"
+                                   Grid.Row="0"
+                                   Grid.Column="3"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>
