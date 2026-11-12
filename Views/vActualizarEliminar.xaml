@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CcisnerosS6.Views.vActualizarEliminar"
+             Title="vActualizarEliminar">
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="20"
+            Spacing="20">
+
+            <Label 
+                Text="Actualizar o Eliminar Estudiante"
+                FontSize="20"
+                FontAttributes="Bold"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+
+            <Grid RowSpacing="20" ColumnSpacing="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Label Text="Código"
+                       VerticalOptions="Center"
+                       Grid.Row="0"
+                       Grid.Column="0"/>
+                <Entry x:Name="txtCodigo"
+                       IsReadOnly="True"
+                       Grid.Row="0"
+                       Grid.Column="1"/>
+
+                <Label Text="Nombre del estudiante"
+                       VerticalOptions="Center"
+                       Grid.Row="1"
+                       Grid.Column="0"/>
+                <Entry x:Name="txtNombre"
+                       Placeholder="Ingresar nombre"
+                       Grid.Row="1"
+                       Grid.Column="1"/>
+
+                <Label Text="Apellido del estudiante"
+                       VerticalOptions="Center"
+                       Grid.Row="2"
+                       Grid.Column="0"/>
+                <Entry x:Name="txtApellido"
+                       Placeholder="Ingresar el apellido"
+                       Grid.Row="2"
+                       Grid.Column="1"/>
+
+                <Label Text="Edad del estudiante"
+                       VerticalOptions="Center"
+                       Grid.Row="3"
+                       Grid.Column="0"/>
+                <Entry x:Name="txtEdad"
+                       Placeholder="Ingresar la edad"
+                       Keyboard="Numeric"
+                       MaxLength="2"
+                       Grid.Row="3"
+                       Grid.Column="1"/>
+            </Grid>
+
+            <Button x:Name="btnActualizar"
+                    Text="Actualizar"
+                    Clicked="btnActualizar_Clicked"/>
+
+            <Button x:Name="btnEliminar"
+                    Text="Eliminar"
+                    Clicked="btnEliminar_Clicked"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

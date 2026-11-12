@@ -6,31 +6,38 @@ namespace CcisnerosS6.Views;
 
 public partial class vEstudiante : ContentPage
 {
-	private const string Url = "http://192.168.17.15/ws_uisrael/ws_estudiante.php";
+    private const string Url = "http://192.168.17.15/ws_uisrael/ws_estudiante.php";
 
     private readonly HttpClient cliente = new HttpClient();
 
-	private ObservableCollection<Estudiante> _estudiante;
+    private ObservableCollection<Estudiante> _estudiante;
 
-
-
-
-	public vEstudiante()
-	{
-		InitializeComponent();
-		Mostrar();
-	}
-
-	public async void Mostrar()
-	{
-		var content = await cliente.GetStringAsync(Url);
-		List<Estudiante> mostrarEstudiante = JsonConvert.DeserializeObject<List<Estudiante>>(content);
-		_estudiante = new ObservableCollection<Estudiante>(mostrarEstudiante);
-        listaEstudiantes.ItemsSource = _estudiante;
-	}
-
-    private void btnAgregar_Clicked()
+    public vEstudiante()
     {
+        InitializeComponent();
+        Mostrar();
+    }
 
+    public async void Mostrar()
+    {
+        var content = await cliente.GetStringAsync(Url);
+        List<Estudiante> mostrarEstudiante = JsonConvert.DeserializeObject<List<Estudiante>>(content);
+        _estudiante = new ObservableCollection<Estudiante>(mostrarEstudiante);
+        listaEstudiantes.ItemsSource = _estudiante;
+    }
+
+    private void btnAgregar_Clicked(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new vNuevoEstudiante());
+    }
+
+    private void listaEstudiantes_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+    {
+        if (e.SelectedItem == null)
+            return;
+
+        var objEstudiante = (Estudiante)e.SelectedItem;
+        listaEstudiantes.SelectedItem = null;
+        Navigation.PushAsync(new vActualizarEliminar(objEstudiante));
     }
 }
